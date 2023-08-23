@@ -1,0 +1,17 @@
+@import '@/assets/scss/constants/variables';
+
+.container-avatar {
+    width: $ni-height;
+    height: $ni-height;
+    background-color: white;
+    border: 2px solid $primary-color;
+    border-radius: 25px;
+    background-image: url('../../../app/favicon.ico');
+    background-size: contain;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
