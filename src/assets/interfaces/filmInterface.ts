@@ -7,6 +7,7 @@ interface film {
     director: string;
     actors: string[];
     poster: string;
+    linkFilm: string;
 }
 
 export default film;

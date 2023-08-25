@@ -19,15 +19,15 @@ const dataNav = [
     },
     {
         title: 'Category',
-        link: 'pages/category',
+        link: '/pages/category',
     },
     {
         title: 'Movie',
-        link: 'pages/movie',
+        link: '/pages/movie',
     },
     {
         title: 'Series',
-        link: 'pages/series',
+        link: '/pages/series',
     },
 ];
 
