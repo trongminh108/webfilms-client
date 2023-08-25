@@ -6,22 +6,28 @@ import React, { useEffect, useRef } from 'react';
 
 import Avatar from '@/app/components/avatar/avatar';
 import SearchBar from '@/app/components/searchBar/searchBar';
+import Link from 'next/link';
 
 const dataNav = [
     {
         title: 'T-Gex',
+        link: '/home',
     },
     {
         title: 'Home',
+        link: '/home',
     },
     {
         title: 'Category',
+        link: 'pages/category',
     },
     {
         title: 'Movie',
+        link: 'pages/movie',
     },
     {
         title: 'Series',
+        link: 'pages/series',
     },
 ];
 
@@ -44,7 +50,6 @@ function Navigation() {
         const itemActive = nav?.querySelector('.nItem.active');
         itemActive?.classList.remove('active');
         event.target.classList.add('active');
-        console.log(event.target, event.target.offsetLeft);
     }
 
     function handleOnMouseOverNavItem(event: any) {
@@ -69,27 +74,29 @@ function Navigation() {
                 {dataNav.map((item, index) => {
                     if (index === 0) {
                         return (
-                            <div
+                            <Link
                                 key={item.title}
+                                href={item.link}
                                 className="nItem active"
                                 onMouseOver={handleOnMouseOverNavItem}
                                 onMouseLeave={handleOnMouseLeaveNavItem}
                                 onClick={handleOnClickNavItem}
                             >
                                 {item.title}
-                            </div>
+                            </Link>
                         );
                     }
                     return (
-                        <div
+                        <Link
                             key={item.title}
+                            href={item.link}
                             className="nItem"
                             onMouseOver={handleOnMouseOverNavItem}
                             onMouseLeave={handleOnMouseLeaveNavItem}
                             onClick={handleOnClickNavItem}
                         >
                             {item.title}
-                        </div>
+                        </Link>
                     );
                 })}
             </div>

@@ -1,17 +1,78 @@
 @import '@/assets/scss/constants/variables';
 
 .container-avatar {
-    width: $ni-height;
-    height: $ni-height;
-    background-color: white;
-    border: 2px solid $primary-color;
-    border-radius: 25px;
-    background-image: url('../../../app/favicon.ico');
-    background-size: contain;
-    transition: transform 0.2s ease;
+    position: relative;
 
-    &:hover {
-        cursor: pointer;
-        transform: scale(1.2);
+    .avatarImage {
+        width: $ni-height;
+        height: $ni-height;
+        background-color: white;
+        border: 2px solid $primary-color;
+        border-radius: 25px;
+        background-image: url('../../../app/favicon.ico');
+        background-size: contain;
+        transition: transform 0.2s ease;
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+    }
+
+    .options-avatar {
+        width: 150px;
+        height: 0;
+        background-color: white;
+        position: absolute;
+        border: none;
+        outline: none;
+        top: 60px;
+        left: -110px;
+        border-radius: 10px 0 10px 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease, height 0.3s ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            outline: none;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid white;
+            right: 0;
+            transform: translateY(-99%);
+        }
+
+        .option {
+            width: 100%;
+            height: 0px;
+            color: black;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            transition: height 0.3s ease, font-weight 0.2s ease,
+                font-size 0.2s ease;
+
+            &:hover {
+                cursor: pointer;
+                font-size: 17px;
+                font-weight: 600;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $third-color;
+            }
+        }
+
+        &.visible {
+            opacity: 1;
+            height: 150px;
+
+            .option {
+                height: 50px;
+                display: flex;
+            }
+        }
     }
 }

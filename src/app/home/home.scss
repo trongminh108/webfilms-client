@@ -1,5 +1,9 @@
-.container {
+.home-container {
     width: 100%;
-    min-height: 300vh;
+    min-height: 100vh;
     background-color: royalblue;
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
 }

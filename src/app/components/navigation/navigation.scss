@@ -10,6 +10,7 @@ $ni-radius: 20px;
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
+    z-index: 10;
 
     &.sticky {
         width: 100%;
@@ -55,6 +56,8 @@ $ni-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
+            color: white;
             border-radius: $ni-radius;
             background-color: transparent;
             z-index: 1;
