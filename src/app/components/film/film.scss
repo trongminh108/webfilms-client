@@ -3,11 +3,10 @@
 .filmContainer {
     width: calc($wh * $w-ratio);
     height: calc($wh * $h-ratio);
-    border-radius: 20px;
-    background-color: lavender;
+    border-radius: 15px;
+    background-color: black;
     position: relative;
     margin-top: 30px;
-    border: 2px solid green;
     position: relative;
     overflow: hidden;
 
@@ -27,20 +26,19 @@
         transition: transform 0.3s ease;
         width: 100%;
         height: 100%;
-        border-radius: 20px;
     }
 
     .filmDetail {
         width: 100%;
         height: 50px;
-        background-color: rgba($color: #000000, $alpha: 0.6);
+        background-color: rgba($color: black, $alpha: 0.9);
         color: yellow;
-        border-radius: 0 0 20px 20px;
         position: absolute;
         bottom: 0;
         transition: height 0.3s ease;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
 }
