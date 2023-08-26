@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
+    // output: 'export',
     images: {
         remotePatterns: [
             {
@@ -10,6 +10,9 @@ const nextConfig = {
                 pathname: '/files/**',
             },
         ],
+    },
+    experimental: {
+        appDir: true,
     },
 };
 
