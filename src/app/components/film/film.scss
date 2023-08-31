@@ -8,10 +8,8 @@
     border-radius: 15px;
     background-color: black;
     position: relative;
-    margin-top: 30px;
-    position: relative;
     overflow: hidden;
-    user-select: none;
+    display: flex;
 
     @include mxs.responsive('mobile') {
         width: calc(vars.$mobile-wh * vars.$w-ratio);

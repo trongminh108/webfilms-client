@@ -2,7 +2,7 @@
 import './filmsContainer.scss';
 
 import Film from '../film/film';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 function FilmsContainer({ data }: { data: {}[] }) {
     const container = useRef<HTMLDivElement>(null);

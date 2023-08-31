@@ -3,11 +3,12 @@
 
 .filmsContainer {
     width: 70%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(vars.$d-filmsPerView, 1fr);
     place-items: center;
 
-    background-color: red;
+    background-color: vars.$third-color;
 
     @include mxs.responsive('tablet') {
         grid-template-columns: repeat(vars.$t-filmsPerView, 1fr);

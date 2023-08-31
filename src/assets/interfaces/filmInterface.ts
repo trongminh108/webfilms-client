@@ -7,6 +7,8 @@ interface film {
     director: string;
     actors: string[];
     poster: string;
+    views: number;
+    rate: number;
     linkFilm: string;
 }
 
