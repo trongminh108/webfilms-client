@@ -1,4 +1,10 @@
-// @import '@/assets/scss/constants/variables';
+//@use '@/assets/scss/constants/variables' as vars;
+
+/*======================THEME COLOR======================*/
+$primary-color: aqua;
+$secondary-color: #2ecc71;
+$third-color: royalblue;
+$background-color: #1d2a35;
 
 /*======================HEADER FOOTER======================*/
 $hf-height: 150px;
@@ -10,12 +16,15 @@ $ni-width: 100px;
 $ni-height: 40px;
 $ni-radius: 20px;
 
-/*======================THEME COLOR======================*/
-$primary-color: aqua;
-$secondary-color: green;
-$third-color: royalblue;
-
 /*======================POSTER FILM======================*/
-$wh: 6.5px;
+$desktop-wh: 6.5px;
+$tablet-wh: 6.5px;
+$mobile-wh: 4.5px;
+
 $w-ratio: 27;
 $h-ratio: 40;
+
+/*======================FILMS CONTAINER======================*/
+$d-filmsPerView: 4;
+$t-filmsPerView: 3;
+$m-filmsPerView: 2;

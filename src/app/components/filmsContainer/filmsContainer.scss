@@ -1,0 +1,19 @@
+@use '@/assets/scss/constants/variables' as vars;
+@use '@/assets/scss/constants/mixins' as mxs;
+
+.filmsContainer {
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(vars.$d-filmsPerView, 1fr);
+    place-items: center;
+
+    background-color: red;
+
+    @include mxs.responsive('tablet') {
+        grid-template-columns: repeat(vars.$t-filmsPerView, 1fr);
+    }
+
+    @include mxs.responsive('mobile') {
+        grid-template-columns: repeat(vars.$m-filmsPerView, 1fr);
+    }
+}

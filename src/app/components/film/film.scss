@@ -1,14 +1,22 @@
-@import '@/assets/scss/constants/variables';
+// @import '@/assets/scss/constants/variables';
+@use '@/assets/scss/constants/variables' as vars;
+@use '@/assets/scss/constants/mixins' as mxs;
 
 .filmContainer {
-    width: calc($wh * $w-ratio);
-    height: calc($wh * $h-ratio);
+    width: calc(vars.$desktop-wh * vars.$w-ratio);
+    height: calc(vars.$desktop-wh * vars.$h-ratio);
     border-radius: 15px;
     background-color: black;
     position: relative;
     margin-top: 30px;
     position: relative;
     overflow: hidden;
+    user-select: none;
+
+    @include mxs.responsive('mobile') {
+        width: calc(vars.$mobile-wh * vars.$w-ratio);
+        height: calc(vars.$mobile-wh * vars.$h-ratio);
+    }
 
     &:hover {
         cursor: pointer;

@@ -14,6 +14,16 @@ const nextConfig = {
     experimental: {
         appDir: true,
     },
+    // reactStrictMode: true,
+    // redirects: async () => {
+    //     return [
+    //         {
+    //             source: '/',
+    //             destination: '/pages/category',
+    //             permanent: true,
+    //         },
+    //     ];
+    // },
 };
 
 module.exports = nextConfig;

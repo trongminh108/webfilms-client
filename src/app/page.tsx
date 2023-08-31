@@ -11,5 +11,5 @@ export default function Home() {
         route.push('/home');
     });
 
-    return;
+    return <></>;
 }

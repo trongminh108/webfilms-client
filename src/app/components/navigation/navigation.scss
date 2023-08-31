@@ -1,3 +1,5 @@
+@use '@/assets/scss/constants/variables' as vars;
+
 $nav-height: 55px;
 $ni-width: 100px;
 $ni-height: 40px;
@@ -19,7 +21,8 @@ $ni-radius: 20px;
     }
 
     &.sticky + * {
-        padding-top: $nav-height;
+        // padding-top: $nav-height;
+        margin-top: $nav-height;
     }
 
     .navItems {
@@ -37,7 +40,7 @@ $ni-radius: 20px;
                 position: absolute;
                 width: $ni-width;
                 height: $ni-height;
-                background-color: green;
+                background-color: vars.$secondary-color;
                 border-radius: $ni-radius;
                 left: 0;
                 transition: left 0.4s ease-in;
@@ -69,7 +72,9 @@ $ni-radius: 20px;
             }
 
             &:active {
-                background-color: darkgreen;
+                & ~ .navBackground {
+                    background-color: darkgreen;
+                }
             }
         }
     }

@@ -1,0 +1,27 @@
+//@use '@/assets/scss/constants/mixins' as mxs;
+
+@mixin centerFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin responsive($breakpoint) {
+    @if ($breakpoint == 'desktop') {
+        @media screen and (min-width: 1024px) {
+            @content;
+        }
+    }
+
+    @if ($breakpoint == 'tablet') {
+        @media screen and (min-width: 740px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @if ($breakpoint == 'mobile') {
+        @media screen and (max-width: 739px) {
+            @content;
+        }
+    }
+}
