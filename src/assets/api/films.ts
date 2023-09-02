@@ -23,7 +23,7 @@ const films = [
         actors: ['Jesse Eisenberg', 'Andrew Garfield', 'Justin Timberlake'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/the-social-network.jpg',
         views: 12,
-        rate: 4.2,
+        rate: 3.9,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -37,7 +37,7 @@ const films = [
         actors: ['Tom Hanks', 'Tim Allen', 'Joan Cusack'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/toy-story-3.jpg',
         views: 13,
-        rate: 4.3,
+        rate: 4.15,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -51,7 +51,7 @@ const films = [
         actors: ['Colin Firth', 'Geoffrey Rush', 'Helena Bonham Carter'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/the-kings-speech.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 4,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -65,7 +65,7 @@ const films = [
         actors: ['Natalie Portman', 'Mila Kunis', 'Vincent Cassel'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/black-swan.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 4,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -79,7 +79,7 @@ const films = [
         actors: ['Emma Stone', 'Viola Davis', 'Octavia Spencer'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/the-help.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 4.05,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -93,7 +93,7 @@ const films = [
         actors: ['Charlize Theron', 'Tom Hardy', 'Nicholas Hoult'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/mad-max-fury-road.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 4.25,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -107,7 +107,7 @@ const films = [
         actors: ['Song Kang-ho', 'Lee Sun-kyun', 'Cho Yeo-jeong'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/parasite.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 4.4,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -121,7 +121,7 @@ const films = [
         actors: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/the-grand-budapest-hotel.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 4.05,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },
@@ -135,7 +135,7 @@ const films = [
         actors: ['Robert Downey Jr.', 'Gwyneth Paltrow', 'Jeff Bridges'],
         poster: 'https://webserver-l2tp.onrender.com/files/images/iron-man.jpg',
         views: 10,
-        rate: 4.5,
+        rate: 3.95,
         linkFilm:
             'https://drive.google.com/file/d/1i8ZZahNukxku7rMBwPsk_3FUKnmVDDjX/preview',
     },

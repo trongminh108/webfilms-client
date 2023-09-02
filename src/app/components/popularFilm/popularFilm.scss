@@ -2,7 +2,7 @@
 
 .popularFilmContainer {
     width: 90%;
-    height: 200px;
+    height: auto;
     background-color: rgba($color: #000000, $alpha: 0.8);
     display: flex;
     justify-content: center;
@@ -10,6 +10,7 @@
     border-radius: vars.$pf-radius;
     gap: 10px;
     text-decoration: none;
+    padding: 15px;
 
     .image {
         width: calc(vars.$dp-wh * vars.$w-ratio);
@@ -26,11 +27,16 @@
     }
 
     .popularFilmDetail {
-        width: 50%;
+        width: 70%;
         height: calc(vars.$dp-wh * vars.$h-ratio);
-        background-color: aqua;
+        background-color: rgba($color: vars.$primary-color, $alpha: 0.6);
+        padding: 15px;
         border-radius: vars.$pf-radius;
+        font-size: 14px;
         display: flex;
+        justify-content: space-around;
+        color: white;
+        flex-direction: column;
     }
 
     &:hover {

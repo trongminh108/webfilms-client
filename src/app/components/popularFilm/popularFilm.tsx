@@ -23,11 +23,9 @@ function PopularFilm({ film }: { film: FilmInterface }) {
                 />
             </div>
             <div className="popularFilmDetail">
-                {/* <p>Name: </p>
-                <p>Views: </p>
-                <p>Rate: </p> */}
-                <Rated />
-                <Rated />
+                <p>{film.name}</p>
+                <p>{film.views} views</p>
+                <Rated rated={film.rate} />
             </div>
         </Link>
     );

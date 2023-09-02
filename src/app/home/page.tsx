@@ -10,6 +10,7 @@ function Home() {
     return (
         <div className="home-container">
             <Sidebar data={PopularFilms} />
+
             <FilmsContainer data={ListFilms} />
         </div>
     );
