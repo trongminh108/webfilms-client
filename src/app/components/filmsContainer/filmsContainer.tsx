@@ -15,21 +15,12 @@ function FilmsContainer({ data }: { data: {}[] }) {
         limit: 3,
         totalElements: data.length,
     });
-    const [filter, setFilter] = useState({
-        pagination: pagination,
-    });
-
-    useEffect(() => {
-        setPagination({ ...filter.pagination });
-    }, [filter]);
 
     function handleOnPageChange(newPage: number) {
-        setFilter({
-            ...filter,
-            pagination: {
-                ...filter.pagination,
-                page: newPage,
-            },
+        setPagination({ ...pagination, page: newPage });
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
         });
     }
 
