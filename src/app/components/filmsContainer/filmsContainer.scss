@@ -2,19 +2,7 @@
 @use '@/assets/scss/constants/mixins' as mxs;
 
 .filmsContainer {
-    width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(vars.$d-filmsPerView, 1fr);
-    place-items: center;
 
     background-color: vars.$third-color;
-
-    @include mxs.responsive('tablet') {
-        grid-template-columns: repeat(vars.$t-filmsPerView, 1fr);
-    }
-
-    @include mxs.responsive('mobile') {
-        grid-template-columns: repeat(vars.$m-filmsPerView, 1fr);
-    }
 }

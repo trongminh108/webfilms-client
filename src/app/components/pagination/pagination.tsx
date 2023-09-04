@@ -1,3 +1,4 @@
+import { Container } from 'react-bootstrap';
 import './pagination.scss';
 
 interface Paginate {
@@ -18,7 +19,7 @@ function Pagination({ pagination, onPageChange }: Paginate) {
     }
 
     return (
-        <div className="paginationContainer">
+        <Container className="paginationContainer">
             <button
                 disabled={page <= 1}
                 onClick={() => handleOnClick(page - 1)}
@@ -31,7 +32,7 @@ function Pagination({ pagination, onPageChange }: Paginate) {
             >
                 Next
             </button>
-        </div>
+        </Container>
     );
 }
 

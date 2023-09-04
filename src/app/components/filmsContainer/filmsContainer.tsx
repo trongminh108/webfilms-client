@@ -1,18 +1,20 @@
 'use client';
 import './filmsContainer.scss';
 
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 
 import PaginationInterface from '@/assets/interfaces/pagination';
 
 import Film from '../film/film';
 import Pagination from '../pagination/pagination';
+import { Container, Row, Col } from 'react-bootstrap';
+import LoadingContainer from './loading';
 
 function FilmsContainer({ data }: { data: {}[] }) {
     const container = useRef<HTMLDivElement>(null);
     const [pagination, setPagination] = useState<PaginationInterface>({
         page: 1,
-        limit: 3,
+        limit: 7,
         totalElements: data.length,
     });
 
@@ -20,7 +22,7 @@ function FilmsContainer({ data }: { data: {}[] }) {
         setPagination({ ...pagination, page: newPage });
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            // behavior: 'smooth',
         });
     }
 
@@ -39,20 +41,40 @@ function FilmsContainer({ data }: { data: {}[] }) {
     }
 
     return (
-        <div style={{ width: '70%', height: '100%' }}>
-            <div className="filmsContainer" ref={container}>
-                {/* {data.map((item: any) => (
-                    <Film film={item} key={item.id} />
-                ))} */}
-                {getFilms(data, pagination).map((item: any) => (
-                    <Film film={item} key={item.id} />
-                ))}
-            </div>
-            <Pagination
-                pagination={pagination}
-                onPageChange={handleOnPageChange}
-            />
-        </div>
+        <Suspense fallback={<LoadingContainer />}>
+            <Container
+                fluid
+                className="d-flex 
+                flex-column 
+                justify-content-between 
+                rounded-5
+                overflow-hidden
+                my-4
+                filmsContainer"
+                style={{
+                    height: '100vh',
+                }}
+            >
+                <Row xs={4}>
+                    {getFilms(data, pagination).map((item: any) => (
+                        <Col
+                            key={item.id}
+                            className="d-flex
+                            justify-content-center
+                            py-3"
+                        >
+                            <Film film={item} />
+                        </Col>
+                    ))}
+                </Row>
+                <Row>
+                    <Pagination
+                        pagination={pagination}
+                        onPageChange={handleOnPageChange}
+                    />
+                </Row>
+            </Container>
+        </Suspense>
     );
 }
 
