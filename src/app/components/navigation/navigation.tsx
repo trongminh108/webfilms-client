@@ -38,7 +38,7 @@ function Navigation() {
 
     useEffect(() => {
         const nav = navRef.current;
-        const sticky = nav?.offsetTop || 0;
+        const sticky = nav?.offsetTop ?? 0;
 
         window.onscroll = () => {
             if (window.scrollY > sticky) {
@@ -46,11 +46,13 @@ function Navigation() {
             } else nav?.classList.remove('sticky');
         };
 
-        if (pathName != '/') {
-            const itemActive: any = nav?.querySelector('.nItem.active');
-            const navBG: any = nav?.querySelector('.navBackground');
-            navBG.style.left = itemActive.offsetLeft + 'px';
-        }
+        try {
+            if (pathName != '/') {
+                const itemActive: any = nav?.querySelector('.nItem.active');
+                const navBG: any = nav?.querySelector('.navBackground');
+                navBG.style.left = itemActive.offsetLeft + 'px';
+            }
+        } catch (ex) {}
     }, [pathName]);
 
     function handleOnClickNavItem(event: any) {

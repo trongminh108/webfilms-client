@@ -10,7 +10,7 @@ function PopularFilm({ film }: { film: FilmInterface }) {
     return (
         <Link
             className="popularFilmContainer"
-            href={`/pages/watch-film/${film.id}`}
+            href={`/pages/detail/${film.id}`}
         >
             <div className="image">
                 <Image

@@ -1,7 +1,11 @@
 //@use '@/assets/scss/constants/variables' as vars;
 
+/*======================COLORS======================*/
+$white: white;
+
 /*======================THEME COLOR======================*/
 $primary-color: #2ecc71;
+$primary-color-hover: #208e4e;
 $secondary-color: aqua;
 $third-color: royalblue;
 $background-color: #1d2a35;
@@ -37,3 +41,7 @@ $h-ratio: 40;
 $d-filmsPerView: 4;
 $t-filmsPerView: 3;
 $m-filmsPerView: 2;
+
+/*======================PAGINATION======================*/
+$btnPage-hover: #b3b300;
+$disabled-color: gray;

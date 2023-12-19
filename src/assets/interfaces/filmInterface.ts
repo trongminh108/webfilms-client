@@ -10,6 +10,7 @@ interface film {
     views: number;
     rate: number;
     linkFilm: string;
+    description: string;
 }
 
 export default film;

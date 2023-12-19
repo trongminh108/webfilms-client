@@ -14,7 +14,7 @@ function FilmsContainer({ data }: { data: {}[] }) {
     const container = useRef<HTMLDivElement>(null);
     const [pagination, setPagination] = useState<PaginationInterface>({
         page: 1,
-        limit: 7,
+        limit: 1,
         totalElements: data.length,
     });
 

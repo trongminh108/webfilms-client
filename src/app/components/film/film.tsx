@@ -5,11 +5,10 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 
 import filmInterface from '@/assets/interfaces/filmInterface';
-import wait from '@/features/wait';
 
 async function Film({ film }: { film: filmInterface }) {
     return (
-        <Link className="filmContainer" href={`/pages/watch-film/${film.id}`}>
+        <Link className="filmContainer" href={`/pages/detail/${film.id}`}>
             <Suspense
                 fallback={
                     <div

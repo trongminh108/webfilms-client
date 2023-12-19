@@ -4,7 +4,7 @@ import Iframe from 'react-iframe';
 
 import ListFilms from '@/assets/api/films';
 
-function WatchFilm({ params }: { params: any }) {
+function WatchFilm({ params }: Readonly<{ params: any }>) {
     const film = ListFilms.find((film) => film.id == params.film);
 
     return (
@@ -12,7 +12,7 @@ function WatchFilm({ params }: { params: any }) {
             <div className="filmScreen">
                 <Iframe
                     className="filmFrame"
-                    url={film?.linkFilm || ''}
+                    url={film?.linkFilm ?? ''}
                     width="100%"
                     height="100%"
                 />
