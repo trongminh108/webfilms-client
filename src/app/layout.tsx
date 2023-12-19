@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Navigation from './components/navigation/navigation';
+import Providers from './components/apolloProvider/apolloProvider';
 
 import type { Metadata } from 'next';
 
@@ -24,10 +25,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Header />
-                <Navigation />
-                {children}
-                <Footer />
+                <Providers>
+                    <Header />
+                    <Navigation />
+                    {children}
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );

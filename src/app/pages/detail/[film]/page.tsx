@@ -7,12 +7,24 @@ import Link from 'next/link';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
-import ListFilms from '@/assets/api/films';
 import Rated from '@/app/components/rated/rated';
 import SidebarComment from '@/app/components/sidebarComment/sidebarComment';
+import ListFilms from '@/assets/api/films';
+import { getFilmById } from '@/graphql-client/queries';
+import { useQuery } from '@apollo/client';
 
 function DetailFilm({ params }: any) {
-    const film: any = ListFilms.find((film) => film.id == params.film);
+    const { loading, error, data } = useQuery(getFilmById, {
+        variables: {
+            filmId: params.film,
+        },
+        skip: params.film === null,
+    });
+
+    if (loading) return <p>Film detail loading</p>;
+    if (error) return <p>Error load film</p>;
+
+    const film = params.film !== '' ? data.film : null;
 
     return (
         <Container className="detailFilmContainer" fluid>

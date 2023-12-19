@@ -1,14 +1,14 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import Pagination from '../pagination/pagination';
 
-function FilmsContainerLoading() {
+function FilmsContainerLoading({ message }: { message: string }) {
     return (
         <Container
             fluid
-            className="d-flex flex-column justify-content-between filmsContainer"
+            className="d-flex flex-column justify-content-between filmsContainer rounded-5"
             style={{ backgroundColor: 'green' }}
         >
-            <Row xs={4}>Films Container Loading...</Row>
+            <Row xs={4}>{message}</Row>
             <Row>
                 <Pagination
                     pagination={{ page: 0, limit: 0, totalElements: 0 }}

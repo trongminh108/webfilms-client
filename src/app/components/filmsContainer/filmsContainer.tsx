@@ -2,21 +2,31 @@
 import './filmsContainer.scss';
 
 import { Suspense, useRef, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import PaginationInterface from '@/assets/interfaces/pagination';
+import { getAllFilms } from '@/graphql-client/queries';
+import { useQuery } from '@apollo/client';
 
 import Film from '../film/film';
 import Pagination from '../pagination/pagination';
-import { Container, Row, Col } from 'react-bootstrap';
 import LoadingContainer from './loading';
 
 function FilmsContainer({ data }: { data: {}[] }) {
     const container = useRef<HTMLDivElement>(null);
+
     const [pagination, setPagination] = useState<PaginationInterface>({
         page: 1,
-        limit: 1,
+        limit: 8,
         totalElements: data.length,
     });
+
+    const { loading, error, data: filmData } = useQuery(getAllFilms);
+    if (loading) return <LoadingContainer message="loading" />;
+    if (error) {
+        console.log('Error: ', error.message);
+        return <LoadingContainer message="error" />;
+    }
 
     function handleOnPageChange(newPage: number) {
         setPagination({ ...pagination, page: newPage });
@@ -41,7 +51,7 @@ function FilmsContainer({ data }: { data: {}[] }) {
     }
 
     return (
-        <Suspense fallback={<LoadingContainer />}>
+        <Suspense fallback={<LoadingContainer message="" />}>
             <Container
                 fluid
                 className="d-flex 
@@ -56,7 +66,7 @@ function FilmsContainer({ data }: { data: {}[] }) {
                 }}
             >
                 <Row xs={4}>
-                    {getFilms(data, pagination).map((item: any) => (
+                    {getFilms(filmData.films, pagination).map((item: any) => (
                         <Col
                             key={item.id}
                             className="d-flex

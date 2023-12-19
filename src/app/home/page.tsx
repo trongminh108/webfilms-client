@@ -2,13 +2,14 @@
 
 import './home.scss';
 
+import { Suspense } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+
 import ListFilms from '@/assets/api/films';
 import PopularFilms from '@/assets/api/Popularfilms';
 
 import FilmsContainer from '../components/filmsContainer/filmsContainer';
 import Sidebar from '../components/sidebar/sidebar';
-import { Suspense } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 
 function Home() {
     return (
