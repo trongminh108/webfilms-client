@@ -1,18 +1,24 @@
+'use client';
+
+import { useData } from '@/app/components/context/context';
 import './watchFilmSlug.scss';
 
 import Iframe from 'react-iframe';
+import { useEffect } from 'react';
 
-import ListFilms from '@/assets/api/films';
+function WatchFilm({ params }: any) {
+    const { data: film } = useData();
 
-function WatchFilm({ params }: Readonly<{ params: any }>) {
-    const film = ListFilms.find((film) => film.id == params.film);
+    useEffect(() => {
+        document.title = film.name;
+    }, [film.name]);
 
     return (
         <div className="watchFilmContainer">
             <div className="filmScreen">
                 <Iframe
                     className="filmFrame"
-                    url={film?.linkFilm ?? ''}
+                    url={film.linkFilm}
                     width="100%"
                     height="100%"
                 />

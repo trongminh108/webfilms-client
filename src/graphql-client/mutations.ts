@@ -12,3 +12,22 @@ export const LOGIN_MUTATION = gql`
         }
     }
 `;
+
+export const UPDATE_FILM = gql`
+    mutation UpdateFilm($updateFilmInput: UpdateFilmInput!) {
+        updateFilm(updateFilmInput: $updateFilmInput) {
+            id
+            name
+            category
+            releaseYear
+            country
+            director
+            actors
+            poster
+            views
+            rate
+            linkFilm
+            description
+        }
+    }
+`;

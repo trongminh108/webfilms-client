@@ -2,12 +2,15 @@
 
 import './navigation.scss';
 
+import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Avatar from '@/app/components/avatar/avatar';
 import SearchBar from '@/app/components/searchBar/searchBar';
+import { user_role } from '@/constants/cookies';
+import { useData } from '../context/context';
 
 const dataNav = [
     {
@@ -32,9 +35,17 @@ const dataNav = [
     },
 ];
 
+const adminItem = {
+    title: 'Admin',
+    link: '/pages/admin/manage',
+};
+
 function Navigation() {
     const navRef = useRef<HTMLDivElement>(null);
     const [pathName, setPathName] = useState(usePathname());
+    const [role_admin, setRole_admin] = useState('');
+    const { data } = useData();
+    let cookie_role = Cookies.get(user_role);
 
     useEffect(() => {
         const nav = navRef.current;
@@ -53,7 +64,11 @@ function Navigation() {
                 navBG.style.left = itemActive.offsetLeft + 'px';
             }
         } catch (ex) {}
-    }, [pathName]);
+
+        cookie_role = Cookies.get(user_role);
+        if (cookie_role) setRole_admin(cookie_role);
+        else setRole_admin(data);
+    }, [pathName, cookie_role, data]);
 
     function handleOnClickNavItem(event: any) {
         const nav = navRef.current;
@@ -108,6 +123,17 @@ function Navigation() {
                         </Link>
                     );
                 })}
+                {role_admin == '1' && (
+                    <Link
+                        href={adminItem.link}
+                        className="nItem"
+                        onMouseOver={handleOnMouseOverNavItem}
+                        onMouseLeave={handleOnMouseLeaveNavItem}
+                        onClick={handleOnClickNavItem}
+                    >
+                        {adminItem.title}
+                    </Link>
+                )}
                 <div className="navBackground"></div>
             </div>
             <div className="navItems i2">

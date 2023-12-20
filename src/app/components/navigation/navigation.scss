@@ -31,10 +31,11 @@ $ni-radius: 20px;
         align-items: center;
 
         &.i1 {
-            width: 45%;
+            width: 60%;
             display: flex;
-            justify-content: space-between;
+            justify-content: start;
             position: relative;
+            gap: 1rem;
 
             .navBackground {
                 position: absolute;
@@ -48,7 +49,7 @@ $ni-radius: 20px;
         }
 
         &.i2 {
-            width: 50%;
+            width: 40%;
             display: flex;
             justify-content: flex-end;
         }

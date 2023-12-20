@@ -1,4 +1,5 @@
 //@use '@/assets/scss/constants/mixins' as mxs;
+@use '@/assets/scss/constants/variables' as vars;
 
 @mixin centerFlex {
     display: flex;
@@ -23,5 +24,13 @@
         @media screen and (max-width: 739px) {
             @content;
         }
+    }
+}
+
+@mixin hover-transition-color($duration: 0.3s) {
+    transition: color $duration;
+
+    &:hover {
+        color: vars.$primary-color !important;
     }
 }

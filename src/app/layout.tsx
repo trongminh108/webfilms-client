@@ -1,3 +1,5 @@
+'use client';
+
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -7,15 +9,9 @@ import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Navigation from './components/navigation/navigation';
 import Providers from './components/apolloProvider/apolloProvider';
-
-import type { Metadata } from 'next';
+import { DataProvider } from './components/context/context';
 
 const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-    title: 'Home',
-    description: 'T-Gex Home',
-};
 
 export default function RootLayout({
     children,
@@ -26,10 +22,12 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <Providers>
-                    <Header />
-                    <Navigation />
-                    {children}
-                    <Footer />
+                    <DataProvider>
+                        <Header />
+                        <Navigation />
+                        {children}
+                        <Footer />
+                    </DataProvider>
                 </Providers>
             </body>
         </html>

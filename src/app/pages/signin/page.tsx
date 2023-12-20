@@ -2,18 +2,25 @@
 import './signin.scss';
 
 import { MD5 } from 'crypto-js';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 
 import { LOGIN_MUTATION } from '@/graphql-client/mutations';
 import { useMutation } from '@apollo/client';
+import { useRouter } from 'next/navigation';
 
 function SignIn() {
     const [showPassword, setShowPassword] = useState<Boolean>(false);
     const [username_inp, setUsername_inp] = useState<string>('');
     const [password_inp, setPassword_inp] = useState<string>('');
     const [loginMutation, { loading, error }] = useMutation(LOGIN_MUTATION);
+    const router = useRouter();
+
+    useEffect(() => {
+        document.title = 'Sign in account';
+    }, []);
 
     function handleShowpassword() {
         setShowPassword((prev) => !prev);
@@ -29,7 +36,6 @@ function SignIn() {
 
     async function handleSubmitForm(e: any) {
         e.preventDefault();
-        alert(username_inp + ',' + MD5(password_inp).toString());
         try {
             const { data } = await loginMutation({
                 variables: {
@@ -38,7 +44,30 @@ function SignIn() {
                 },
             });
 
-            console.log('Login successful:', data);
+            const expirationDate = new Date();
+            expirationDate.setHours(expirationDate.getHours() + 7);
+            const optionCookie = {
+                expires: expirationDate,
+                path: '/',
+            };
+            Cookies.set('access_token', data.login.access_token, optionCookie);
+            Cookies.set(
+                'access_token_username',
+                data.login.user.username,
+                optionCookie
+            );
+            Cookies.set(
+                'access_token_gmail',
+                data.login.user.gmail,
+                optionCookie
+            );
+            Cookies.set(
+                'access_token_role',
+                data.login.user.role,
+                optionCookie
+            );
+            alert(`Login successful: ${data.login.user.username}`);
+            router.replace('/home');
         } catch (err: any) {
             console.error('Login error:', err.message);
         }

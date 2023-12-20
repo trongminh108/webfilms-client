@@ -1,19 +1,24 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 
 import './detailFilmSlug.scss';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import Rated from '@/app/components/rated/rated';
 import SidebarComment from '@/app/components/sidebarComment/sidebarComment';
-import ListFilms from '@/assets/api/films';
 import { getFilmById } from '@/graphql-client/queries';
 import { useQuery } from '@apollo/client';
+import { useData } from '@/app/components/context/context';
 
 function DetailFilm({ params }: any) {
+    useEffect(() => {
+        document.title = 'Detail Film';
+    }, []);
+
     const { loading, error, data } = useQuery(getFilmById, {
         variables: {
             filmId: params.film,
@@ -25,6 +30,14 @@ function DetailFilm({ params }: any) {
     if (error) return <p>Error load film</p>;
 
     const film = params.film !== '' ? data.film : null;
+    const { setData } = useData();
+
+    function handleOnClickWatchFilm() {
+        setData({
+            name: film.name,
+            linkFilm: film.linkFilm,
+        });
+    }
 
     return (
         <Container className="detailFilmContainer" fluid>
@@ -63,6 +76,9 @@ function DetailFilm({ params }: any) {
                                                 <Link
                                                     className="btn btn-watch"
                                                     href={`/pages/watch-film/${film.id}`}
+                                                    onClick={
+                                                        handleOnClickWatchFilm
+                                                    }
                                                 >
                                                     Xem phim
                                                 </Link>
