@@ -1,7 +1,5 @@
 'use client';
 
-import './edit-film.scss';
-
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { Container, InputGroup, Row, Col } from 'react-bootstrap';
@@ -10,16 +8,19 @@ import Form from 'react-bootstrap/Form';
 
 import { useData } from '@/app/components/context/context';
 import { useMutation } from '@apollo/client';
-import { UPDATE_FILM } from '@/graphql-client/mutations';
+import { CREATE_FILM, UPDATE_FILM } from '@/graphql-client/mutations';
 import { getAllFilms } from '@/graphql-client/queries';
 import { useRouter } from 'next/navigation';
 import { BACKEND_URL_FILE_UPLOAD, BACKEND_URL_IMAGES } from '@/constants/url';
 import axios from 'axios';
 
-function EditFilm({ params }: any) {
-    const { data: film } = useData();
+function CreateFilm() {
+    useEffect(() => {
+        document.title = 'Create new Film';
+    }, []);
+
     const router = useRouter();
-    const [avatar, setAvatar] = useState(film.poster);
+    const [avatar, setAvatar] = useState('');
     const [fileImg, setFileImg] = useState();
 
     useEffect(() => {
@@ -35,20 +36,20 @@ function EditFilm({ params }: any) {
     }
 
     const [formData, setFormData] = useState({
-        name: film.name,
-        category: film.category.join(', '),
-        releaseYear: film.releaseYear,
-        country: film.country,
-        director: film.director,
-        actors: film.actors.join(', '),
-        views: film.views,
-        rate: film.rate,
-        linkFilm: film.linkFilm,
-        description: film.description,
+        name: '',
+        category: '',
+        releaseYear: '',
+        country: '',
+        director: '',
+        actors: '',
+        views: '',
+        rate: '',
+        linkFilm: '',
+        description: '',
     });
 
-    const [updateFilmMutation, dataUpdateFilmMutation] =
-        useMutation(UPDATE_FILM);
+    const [createFilmMutation, datacreateFilmMutation] =
+        useMutation(CREATE_FILM);
 
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
@@ -74,8 +75,7 @@ function EditFilm({ params }: any) {
 
     async function handleSaveOnClick(e: any) {
         e.preventDefault();
-        const updateFilmInput = {
-            id: film.id,
+        const createFilmInput = {
             name: formData.name,
             category: formData.category
                 .split(',')
@@ -86,7 +86,7 @@ function EditFilm({ params }: any) {
             actors: formData.actors
                 .split(',')
                 .map((actor: any) => actor.trim()),
-            poster: film.poster,
+            poster: '',
             views: formData.views,
             rate: formData.rate,
             linkFilm: formData.linkFilm,
@@ -95,13 +95,13 @@ function EditFilm({ params }: any) {
         try {
             if (fileImg != undefined) {
                 handleSaveFile();
-                updateFilmInput.poster = BACKEND_URL_IMAGES + fileImg?.name;
+                createFilmInput.poster = BACKEND_URL_IMAGES + fileImg?.name;
             }
-            await updateFilmMutation({
-                variables: { updateFilmInput: updateFilmInput },
+            await createFilmMutation({
+                variables: { createFilmInput: createFilmInput },
                 refetchQueries: [{ query: getAllFilms }],
             });
-            alert('Updated success!');
+            alert('Created success!');
             router.replace('/pages/admin/manage');
         } catch (ex: any) {
             console.log('Error: ', ex.message);
@@ -112,6 +112,7 @@ function EditFilm({ params }: any) {
         <Container fluid className="edit-film-container">
             <Form className="m-4">
                 <div className="mb-3">
+                    <p className="fw-bold">Poster film</p>
                     <input
                         type="file"
                         name="uploadImage"
@@ -265,4 +266,4 @@ function EditFilm({ params }: any) {
     );
 }
 
-export default EditFilm;
+export default CreateFilm;

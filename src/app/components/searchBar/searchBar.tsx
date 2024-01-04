@@ -2,9 +2,13 @@
 import './searchBar.scss';
 
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { useData } from '../context/context';
 
 function SearchBar() {
     const searchBarRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+    const { setData } = useData();
 
     function handleOnClick(e: any) {
         const searchInput: any =
@@ -18,7 +22,8 @@ function SearchBar() {
 
     function handleOnKeyDown(e: any) {
         if (e.key === 'Enter') {
-            alert(e.target.value);
+            router.push(`/pages/search/${e.target.value}`);
+            setData(e.target.value);
         }
     }
 

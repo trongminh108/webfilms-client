@@ -31,3 +31,30 @@ export const UPDATE_FILM = gql`
         }
     }
 `;
+
+export const CREATE_FILM = gql`
+    mutation CreateFilm($createFilmInput: CreateFilmInput!) {
+        createFilm(createFilmInput: $createFilmInput) {
+            id
+            name
+            category
+            releaseYear
+            country
+            director
+            actors
+            poster
+            views
+            rate
+            linkFilm
+            description
+        }
+    }
+`;
+
+export const DELETE_FILM = gql`
+    mutation RemoveFilm($removeFilmId: ID!) {
+        removeFilm(id: $removeFilmId) {
+            name
+        }
+    }
+`;

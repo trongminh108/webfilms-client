@@ -12,7 +12,13 @@ import Film from '../film/film';
 import Pagination from '../pagination/pagination';
 import LoadingContainer from './loading';
 
-function FilmsContainer({ data }: { data: {}[] }) {
+function FilmsContainer({
+    data,
+    searchQuery = '',
+}: {
+    data: {}[];
+    searchQuery?: string;
+}) {
     const container = useRef<HTMLDivElement>(null);
 
     const [pagination, setPagination] = useState<PaginationInterface>({
@@ -66,16 +72,35 @@ function FilmsContainer({ data }: { data: {}[] }) {
                 }}
             >
                 <Row xs={4}>
-                    {getFilms(filmData.films, pagination).map((item: any) => (
-                        <Col
-                            key={item.id}
-                            className="d-flex
+                    {getFilms(filmData.films, pagination).map((item: any) => {
+                        if (searchQuery == '')
+                            return (
+                                <Col
+                                    key={item.id}
+                                    className="d-flex
                             justify-content-center
                             py-3"
-                        >
-                            <Film film={item} />
-                        </Col>
-                    ))}
+                                >
+                                    <Film film={item} />
+                                </Col>
+                            );
+                    })}
+                    {searchQuery != '' &&
+                        filmData.films.map((item: any) => {
+                            if (
+                                searchQuery.toLowerCase() ==
+                                item.name.toLowerCase()
+                            ) {
+                                return (
+                                    <Col
+                                        key={item.id}
+                                        className="d-flex justify-content-center py-3"
+                                    >
+                                        <Film film={item} />
+                                    </Col>
+                                );
+                            }
+                        })}
                 </Row>
                 <Row>
                     <Pagination
